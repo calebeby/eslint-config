@@ -22,8 +22,8 @@ The plugins that this exposes are:
 This also exposes a couple rules from
 [`shopify`](https://github.com/shopify/eslint-plugin-shopify):
 
-- `shopify/prefer-early-return`
-- `shopify/prefer-class-properties`
+- [`shopify/prefer-early-return`](https://github.com/Shopify/eslint-plugin-shopify/blob/master/docs/rules/prefer-early-return.md)
+- [`shopify/prefer-class-properties`](https://github.com/Shopify/eslint-plugin-shopify/blob/master/docs/rules/prefer-class-properties.md)
 
 To override settings for any of these plugins, you must prefix the configuration
 with `caleb/`, because the plugins are exposed through this "super-plugin".
