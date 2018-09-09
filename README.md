@@ -41,7 +41,7 @@ with `caleb/`, because the plugins are exposed through this "super-plugin".
 ## Installation
 
 ```sh
-npm i -D eslint-config-calebeby eslint prettier
+npm i -D eslint-plugin-caleb eslint prettier
 ```
 
 ## Usage
