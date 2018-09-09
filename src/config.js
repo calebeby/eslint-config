@@ -86,6 +86,7 @@ module.exports.configs = {
           'typescript/no-unused-vars': 'error',
           'no-restricted-globals': 'off', // broken with interfaces (for example `interface Foo {event: string}`)
           'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAlli
+          'import/named': 'off', // this does not work for type imports; ts handles this
 
           'typescript/no-angle-bracket-type-assertion': 'error',
           'typescript/no-inferrable-types': 'error',
@@ -131,6 +132,7 @@ module.exports.configs = {
       'react/forbid-component-props': 'off', // not sure about this rule atm
       'react/jsx-handler-names': 'off', // not sure about this rule atm
       'react/button-has-type': 'off',
+      'react/prop-types': 'off', // prop types are bad. Use ts or flow
 
       'jsx-a11y/label-has-for': 'off', // deprecated
       'jsx-a11y/label-has-associated-control': 'off', // cannot handle nested custom form element
