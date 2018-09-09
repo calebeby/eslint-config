@@ -1,51 +1,73 @@
 {
-  "name": "@cloudfour/eslint-config",
+  "name": "eslint-plugin-caleb",
   "version": "1.0.0",
-  "description": "Cloud Four's shareable ESLint configuration",
-  "author": "Cloud Four <info@cloudfour.com> (http://cloudfour.com)",
-  "homepage": "https://github.com/cloudfour/eslint-config",
-  "bugs": "https://github.com/cloudfour/eslint-config/issues",
+  "description": "Caleb Eby's shareable ESLint configuration",
+  "author": "Caleb Eby <caleb.eby01@gmail.com>",
+  "homepage": "https://github.com/calebeby/eslint-config",
+  "bugs": "https://github.com/calebeby/eslint-config/issues",
   "license": "MIT",
-  "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cloudfour/eslint-config.git"
-  },
-  "contributors": [
-    "Erik Jung <erik@cloudfour.com>",
-    "Caleb Eby <caleb@cloudfour.com>"
-  ],
-  "files": [
-    ".eslintrc.json",
-    "index.js",
-    "babel.js"
-  ],
-  "engines": {
-    "node": ">=4.0.0"
-  },
+  "main": "index.js",
+  "repository": "calebeby/eslint-config",
   "keywords": [
     "eslint",
     "eslintconfig"
   ],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "babel-eslint": "^6.0.4",
-    "deepmerge": "^2.1.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-config-xo": "^0.23.0"
-  },
-  "peerDependencies": {
-    "eslint": "^5.0.1",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "eslint-plugin-unicorn": "^4.0.3"
-  },
-  "prettier": {
-    "singleQuote": true
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "21.22.0",
+    "eslint-plugin-jsdoc": "3.8.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-promise": "4.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-standard": "4.0.0",
+    "eslint-plugin-typescript": "0.12.0",
+    "eslint-plugin-unicorn": "6.0.1",
+    "typescript-eslint-parser": "18.0.0"
   },
   "devDependencies": {
-    "prettier": "^1.13.7"
+    "@babel/core": "7.0.0",
+    "@babel/plugin-syntax-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-shorthand-properties": "7.0.0",
+    "eslint-config-prettier": "3.0.1",
+    "eslint-config-standard": "12.0.0",
+    "eslint-config-xo": "0.25.0",
+    "eslint-plugin-shopify": "24.0.0",
+    "eslint": "5.5.0",
+    "prettier": "1.14.2",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-commonjs": "9.1.6",
+    "rollup-plugin-json": "3.0.0",
+    "rollup-plugin-node-resolve": "3.3.0",
+    "rollup-plugin-terser": "2.0.2",
+    "rollup": "0.65.0",
+    "typescript": "3.0.3"
+  },
+  "peerDependencies": {
+    "eslint": "5.5.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all",
+    "proseWrap": "always"
+  },
+  "scripts": {
+    "check-lint": "eslint --ignore-path .gitignore . && prettier --list-different --ignore-path .gitignore '**.js'",
+    "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**.js'",
+    "prepublishOnly": "npm run check-lint && npm run build",
+    "build": "rollup -c rollup.config.js && node build.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:caleb/recommended",
+      "plugin:caleb/preact"
+    ]
+  },
+  "engines": {
+    "node": ">=8.3.0"
   }
 }
