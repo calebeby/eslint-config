@@ -51,8 +51,8 @@ Add this to your `package.json`:
 ```json
 {
   "scripts": {
-    "check-lint": "eslint --ignore-path .gitignore . && prettier --list-different --ignore-path .gitignore '**.js'",
-    "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**.js'"
+    "check-lint": "eslint --ignore-path .gitignore . && prettier --list-different --ignore-path .gitignore '**/*.js'",
+    "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**/*.js'"
   },
   "eslintConfig": {
     "extends": ["plugin:caleb/recommended"]
