@@ -41,9 +41,7 @@ export default {
     nodeResolve({ extensions }),
     commonjs(),
     json({ preferConst: true, extensions }),
-    babel({
-      include: 'node_modules/eslint-plugin-shopify/**',
-    }),
+    babel(),
     terser({
       compress: {
         toplevel: true,
