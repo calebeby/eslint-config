@@ -119,6 +119,7 @@ module.exports.configs = {
 
       // silly rules to disable
       'react/jsx-no-literals': 'off',
+      'react/jsx-no-bind': 'off', // we want bind for render props
       'react/jsx-filename-extension': [
         'error',
         { extensions: ['.js', '.jsx', '.tsx'] },
