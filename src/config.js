@@ -60,6 +60,7 @@ module.exports.configs = {
       // overrides
       'valid-jsdoc': 'off',
       'no-return-assign': ['error'],
+      'guard-for-in': 'off', // this is annoying and often unnecessary
       'max-len': 'off', // prettier sometimes chooses to allow lines to exceed max, it is fine
       'func-names': 'off',
       'standard/computed-property-even-spacing': 'off',
