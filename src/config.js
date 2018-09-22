@@ -1,6 +1,9 @@
 const xo = require('eslint-config-xo')
 const standard = require('eslint-config-standard')
 const prettier = require('eslint-config-prettier')
+const prettierUnicorn = require('eslint-config-prettier/unicorn')
+const prettierStandard = require('eslint-config-prettier/standard')
+const prettierReact = require('eslint-config-prettier/react')
 const unicorn = require('eslint-plugin-unicorn')
 const importPlugin = require('eslint-plugin-import')
 const node = require('eslint-plugin-node')
@@ -25,6 +28,15 @@ const hoist = (prefix, rules) =>
     return output
   }, {})
 
+const removeUnused = rules =>
+  Object.entries(rules).reduce((output, [key, val]) => {
+    if (val === 'off' || val === 0 || val[0] === 'off' || val[0] === 0) {
+      return output
+    }
+    output[key] = val
+    return output
+  }, {})
+
 module.exports.environments = hoist('jest', jest.environments)
 
 module.exports.configs = {
@@ -44,38 +56,41 @@ module.exports.configs = {
       window: false,
     },
     plugins: ['caleb'],
-    rules: prefix({
-      // plugins' recommended configs
-      ...unicorn.configs.recommended.rules,
-      ...importPlugin.configs.recommended.rules,
-      ...node.configs.recommended.rules,
+    rules: removeUnused(
+      prefix({
+        // plugins' recommended configs
+        ...unicorn.configs.recommended.rules,
+        ...importPlugin.configs.recommended.rules,
+        ...node.configs.recommended.rules,
 
-      // "standards"
-      ...xo.rules,
-      ...standard.rules,
+        // "standards"
+        ...xo.rules,
+        ...standard.rules,
 
-      // prettier undoes stylistic rules
-      ...prettier.rules,
+        // prettier undoes stylistic rules
+        ...prettier.rules,
+        ...prettierUnicorn.rules,
+        ...prettierStandard.rules,
 
-      // overrides
-      'valid-jsdoc': 'off',
-      'no-return-assign': ['error'],
-      'guard-for-in': 'off', // this is annoying and often unnecessary
-      'max-len': 'off', // prettier sometimes chooses to allow lines to exceed max, it is fine
-      'func-names': 'off',
-      'standard/computed-property-even-spacing': 'off',
-      'node/no-unpublished-require': 'off',
-      'node/no-unpublished-import': 'off',
-      radix: ['error', 'as-needed'], // parseInt should not need base 10, it is the default
-      'capitalized-comments': 'off',
-      'node/no-unsupported-features/es-syntax': 'off',
-      'node/no-unsupported-features/es-builtins': 'off',
-      'max-params': ['warn', 6],
-      'lines-between-class-members': 'off', // this is silly imo
-      'node/shebang': 'off', // tons of false positives
-      'shopify/prefer-early-return': 'error',
-      'shopify/prefer-class-properties': 'error',
-    }),
+        // overrides
+        'valid-jsdoc': 'off',
+        'no-return-assign': ['error'],
+        'guard-for-in': 'off', // this is annoying and often unnecessary
+        'max-len': 'off', // prettier sometimes chooses to allow lines to exceed max, it is fine
+        'func-names': 'off',
+        'node/no-unpublished-require': 'off',
+        'node/no-unpublished-import': 'off',
+        radix: ['error', 'as-needed'], // parseInt should not need base 10, it is the default
+        'capitalized-comments': 'off',
+        'node/no-unsupported-features/es-syntax': 'off',
+        'node/no-unsupported-features/es-builtins': 'off',
+        'max-params': ['warn', 6],
+        'lines-between-class-members': 'off', // this is silly imo
+        'node/shebang': 'off', // tons of false positives
+        'shopify/prefer-early-return': 'error',
+        'shopify/prefer-class-properties': 'error',
+      }),
+    ),
     overrides: [
       {
         files: ['*.ts{x,}'],
@@ -86,7 +101,7 @@ module.exports.configs = {
           'import/no-unresolved': 'off', // maybe look into https://github.com/benmosher/eslint-plugin-import/blob/master/README.md#resolvers
           'typescript/no-unused-vars': 'error',
           'no-restricted-globals': 'off', // broken with interfaces (for example `interface Foo {event: string}`)
-          'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAlli
+          'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAll
           'import/named': 'off', // this does not work for type imports; ts handles this
 
           'typescript/no-angle-bracket-type-assertion': 'error',
@@ -110,13 +125,9 @@ module.exports.configs = {
     rules: prefix({
       ...react.configs.all.rules,
       ...jsxA11y.configs.recommended.rules,
-      'react/require-render-return': 'off', // this is broken for render props called `render`
+      ...prettierReact.rules,
 
-      // handled by prettier
-      'react/jsx-one-expression-per-line': 'off',
-      'react/jsx-indent-props': 'off',
-      'react/jsx-max-props-per-line': 'off',
-      'react/jsx-indent': 'off',
+      'react/require-render-return': 'off', // this is broken for render props called `render`
 
       // silly rules to disable
       'react/jsx-no-literals': 'off',
