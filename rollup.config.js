@@ -3,6 +3,7 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import json from 'rollup-plugin-json'
 import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
+import prettier from 'rollup-plugin-prettier'
 
 const extensions = ['.mjs', '.js', '.json', '.node']
 
@@ -39,19 +40,25 @@ export default {
   external: external,
   plugins: [
     nodeResolve({ extensions }),
-    commonjs(),
-    json({ preferConst: true, extensions }),
+    json({ preferConst: true, compact: true }),
+    commonjs({ extensions }),
     babel(),
     terser({
+      mangle: false,
       compress: {
+        defaults: true,
         toplevel: true,
+        hoist_props: true,
+        join_vars: false,
         passes: 3,
-        pure_getters: true,
+        booleans: false,
       },
-      output: {
-        beautify: true,
-        indent_level: 2,
-      },
+    }),
+    prettier({
+      parser: 'babylon',
+      singleQuote: true,
+      semi: false,
+      trailingComma: 'all',
     }),
   ],
 }
