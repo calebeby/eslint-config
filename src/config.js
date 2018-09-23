@@ -88,6 +88,7 @@ module.exports.configs = {
             ignoreRestSiblings: true,
           },
         ],
+        'object-shorthand': ['error', 'properties'],
         radix: ['error', 'as-needed'], // parseInt should not need base 10, it is the default
         'capitalized-comments': 'off',
         'node/no-unsupported-features/es-syntax': 'off',
