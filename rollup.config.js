@@ -37,7 +37,7 @@ export default {
     format: 'cjs',
     freeze: false,
   },
-  external: external,
+  external,
   plugins: [
     nodeResolve({ extensions }),
     json({ preferConst: true, compact: true }),
