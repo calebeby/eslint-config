@@ -80,6 +80,14 @@ module.exports.configs = {
         'func-names': 'off',
         'node/no-unpublished-require': 'off',
         'node/no-unpublished-import': 'off',
+        'no-unused-vars': [
+          'error',
+          {
+            vars: 'all',
+            args: 'after-used',
+            ignoreRestSiblings: true,
+          },
+        ],
         radix: ['error', 'as-needed'], // parseInt should not need base 10, it is the default
         'capitalized-comments': 'off',
         'node/no-unsupported-features/es-syntax': 'off',
