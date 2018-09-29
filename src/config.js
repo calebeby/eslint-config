@@ -102,13 +102,13 @@ module.exports.configs = {
     ),
     overrides: [
       {
-        files: ['*.ts{x,}'],
+        files: ['*.ts', '*.tsx'],
         parser: require.resolve('typescript-eslint-parser'), // this is resolved from here, rather than from the config consumer
         rules: prefix({
           'import/export': 'off',
           'no-undef': 'off', // super buggy with interfaces
           'import/no-unresolved': 'off', // maybe look into https://github.com/benmosher/eslint-plugin-import/blob/master/README.md#resolvers
-          'typescript/no-unused-vars': 'error',
+          'no-unused-vars': 'off', // too often broken. ts can handle this
           'no-restricted-globals': 'off', // broken with interfaces (for example `interface Foo {event: string}`)
           'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAll
           'import/named': 'off', // this does not work for type imports; ts handles this
