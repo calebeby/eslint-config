@@ -112,6 +112,7 @@ module.exports.configs = {
           'no-restricted-globals': 'off', // broken with interfaces (for example `interface Foo {event: string}`)
           'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAll
           'import/named': 'off', // this does not work for type imports; ts handles this
+          'import/namespace': 'off', // this does not work for type imports; ts handles this
 
           'typescript/no-angle-bracket-type-assertion': 'error',
           'typescript/no-inferrable-types': 'error',
