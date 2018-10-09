@@ -45,7 +45,7 @@
     "rollup-plugin-node-resolve": "3.4.0",
     "rollup-plugin-prettier": "0.4.0",
     "rollup-plugin-terser": "3.0.0",
-    "typescript": "3.1.1"
+    "typescript": "3.1.2"
   },
   "peerDependencies": {
     "eslint": "5.6.1"
