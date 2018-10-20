@@ -113,6 +113,7 @@ module.exports.configs = {
           'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAll
           'import/named': 'off', // this does not work for type imports; ts handles this
           'import/namespace': 'off', // this does not work for type imports; ts handles this
+          'promise/param-names': 'off', // this does not work with typescript's noUnusedLocals because ts wants resolve to start with _
 
           'typescript/no-angle-bracket-type-assertion': 'error',
           'typescript/no-inferrable-types': 'error',
