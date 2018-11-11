@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-caleb",
-  "version": "1.11.2",
+  "version": "1.12.0",
   "description": "Caleb Eby's shareable ESLint configuration",
   "author": "Caleb Eby <caleb.eby01@gmail.com>",
   "homepage": "https://github.com/calebeby/eslint-config",
