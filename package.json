@@ -28,7 +28,7 @@
     "typescript-eslint-parser": "20.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.1.5",
+    "@babel/core": "7.1.6",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0",
     "@babel/plugin-transform-shorthand-properties": "7.0.0",
     "eslint": "5.9.0",
