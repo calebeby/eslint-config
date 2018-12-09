@@ -60,6 +60,7 @@
     "check-lint": "eslint --ignore-path .gitignore . && prettier --list-different --ignore-path .gitignore '**/*.js'",
     "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**/*.js'",
     "prepublishOnly": "npm run check-lint && npm run build",
+    "postpublish": "git tag v$npm_package_version && git push --tags",
     "build": "rollup -c rollup.config.js && node build.js"
   },
   "eslintConfig": {
