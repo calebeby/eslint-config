@@ -152,7 +152,7 @@ module.exports.configs = {
       'react/destructuring-assignment': 'off',
       'react/require-optimization': 'off',
       'react/no-set-state': 'off',
-      'react/jsx-max-depth': ['error', { max: 5 }],
+      'react/jsx-max-depth': ['error', { max: 10 }],
       'react/jsx-sort-props': 'off', // off for now, may change later if there is better autofix for options
       'react/forbid-component-props': 'off', // not sure about this rule atm
       'react/jsx-handler-names': 'off', // not sure about this rule atm
