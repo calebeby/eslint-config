@@ -55,7 +55,7 @@ export default {
       },
     }),
     prettier({
-      parser: 'babylon',
+      parser: 'babel',
       singleQuote: true,
       semi: false,
       trailingComma: 'all',

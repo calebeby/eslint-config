@@ -27,7 +27,7 @@ const stringify = data =>
 
 const createFile = data =>
   prettier.format(stringify(data), {
-    parser: 'babylon',
+    parser: 'babel',
     singleQuote: true,
     semi: false,
   })

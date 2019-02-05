@@ -92,6 +92,7 @@ module.exports.configs = {
         'object-shorthand': ['error', 'properties'],
         radix: ['error', 'as-needed'], // parseInt should not need base 10, it is the default
         'capitalized-comments': 'off',
+        'padding-line-between-statements': 'off',
         'node/no-unsupported-features/es-syntax': 'off',
         'node/no-unsupported-features/es-builtins': 'off',
         'max-params': ['warn', 6],
