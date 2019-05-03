@@ -15,7 +15,7 @@ The plugins that this exposes are:
 - [`promise`](https://github.com/xjamundx/eslint-plugin-promise)
 - [`node`](https://github.com/mysticatea/eslint-plugin-node)
 - [`jest`](https://github.com/jest-community/eslint-plugin-jest)
-- [`typescript`](https://github.com/nzakas/eslint-plugin-typescript)
+- [`typescript`](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
 - [`react`](https://github.com/yannickcr/eslint-plugin-react)
 - [`jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 

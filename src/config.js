@@ -3,6 +3,7 @@ const standard = require('eslint-config-standard')
 const prettier = require('eslint-config-prettier')
 const prettierUnicorn = require('eslint-config-prettier/unicorn')
 const prettierStandard = require('eslint-config-prettier/standard')
+const prettierTypescript = require('eslint-config-prettier/@typescript-eslint')
 const prettierReact = require('eslint-config-prettier/react')
 const unicorn = require('eslint-plugin-unicorn')
 const importPlugin = require('eslint-plugin-import')
@@ -10,30 +11,36 @@ const node = require('eslint-plugin-node')
 const jest = require('eslint-plugin-jest')
 const react = require('eslint-plugin-react')
 const jsxA11y = require('eslint-plugin-jsx-a11y')
+const typescript = require('@typescript-eslint/eslint-plugin')
 
 /**
  * @param {{[key: string]: any}} rules the rules to process
  * @param {false} removeUnused whether to remove rules set to 'off' or 0
  */
 const prefix = rules =>
-  Object.entries(rules).reduce((output, [key, val]) => {
+  Object.entries(rules).reduce((output, [key, value]) => {
     if (key.includes('/')) key = 'caleb/' + key
-    output[key] = val
+    output[key] = value
     return output
   }, {})
 
 const hoist = (prefix, rules) =>
-  Object.entries(rules).reduce((output, [key, val]) => {
-    output[prefix + '/' + key] = val
+  Object.entries(rules).reduce((output, [key, value]) => {
+    output[prefix + '/' + key] = value
     return output
   }, {})
 
 const removeUnused = rules =>
-  Object.entries(rules).reduce((output, [key, val]) => {
-    if (val === 'off' || val === 0 || val[0] === 'off' || val[0] === 0) {
+  Object.entries(rules).reduce((output, [key, value]) => {
+    if (
+      value === 'off' ||
+      value === 0 ||
+      value[0] === 'off' ||
+      value[0] === 0
+    ) {
       return output
     }
-    output[key] = val
+    output[key] = value
     return output
   }, {})
 
@@ -100,13 +107,19 @@ module.exports.configs = {
         'node/shebang': 'off', // tons of false positives
         'shopify/prefer-early-return': 'error',
         'shopify/prefer-class-properties': 'error',
+        'unicorn/prevent-abbreviations': 'off', // I like abbreviations
       }),
     ),
     overrides: [
       {
         files: ['*.ts', '*.tsx'],
-        parser: require.resolve('typescript-eslint-parser'), // this is resolved from here, rather than from the config consumer
+        parser: require.resolve('@typescript-eslint/parser'), // this is resolved from here, rather than from the config consumer
+        parserOptions: {
+          project: './tsconfig.json',
+        },
         rules: prefix({
+          ...typescript.configs.recommended.rules,
+          ...prettierTypescript.rules,
           'import/export': 'off',
           'no-undef': 'off', // super buggy with interfaces
           'import/no-unresolved': 'off', // maybe look into https://github.com/benmosher/eslint-plugin-import/blob/master/README.md#resolvers
@@ -117,12 +130,21 @@ module.exports.configs = {
           'import/namespace': 'off', // this does not work for type imports; ts handles this
           'promise/param-names': 'off', // this does not work with typescript's noUnusedLocals because ts wants resolve to start with _
 
-          'typescript/no-angle-bracket-type-assertion': 'error',
-          'typescript/no-inferrable-types': 'error',
-          'typescript/no-non-null-assertion': 'error',
-          'typescript/no-parameter-properties': 'error',
-          'typescript/no-triple-slash-reference': 'error',
-          'typescript/no-var-requires': 'error',
+          '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
+          '@typescript-eslint/no-inferrable-types': 'error',
+          '@typescript-eslint/no-non-null-assertion': 'error',
+          '@typescript-eslint/no-parameter-properties': 'error',
+          '@typescript-eslint/no-triple-slash-reference': 'error',
+          '@typescript-eslint/no-var-requires': 'error',
+          '@typescript-eslint/explicit-function-return-type': 'off', // inference is usually useful
+          '@typescript-eslint/no-explicit-any': 'off', // any is often necessary
+          '@typescript-eslint/explicit-member-accessibility': 'off', // public is the default and what I use 95% of the time
+          '@typescript-eslint/no-object-literal-type-assertion': 'off', // sometimes you have to override the type of an object
+          '@typescript-eslint/no-use-before-define': 'off',
+          '@typescript-eslint/await-thenable': 'error',
+          '@typescript-eslint/no-unnecessary-qualifier': 'error',
+          '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+          '@typescript-eslint/prefer-includes': 'error',
         }),
       },
       {

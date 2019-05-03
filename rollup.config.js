@@ -25,7 +25,7 @@ const external = [
   'eslint-plugin-node',
   'eslint-plugin-standard',
   'eslint-plugin-jest',
-  'eslint-plugin-typescript',
+  '@typescript-eslint/eslint-plugin',
   'eslint-plugin-react',
   'eslint-plugin-jsx-a11y',
 ]
