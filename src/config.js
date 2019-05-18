@@ -181,6 +181,11 @@ module.exports.configs = {
       'react/jsx-handler-names': 'off', // not sure about this rule atm
       'react/button-has-type': 'off',
       'react/prop-types': 'off', // prop types are bad. Use ts or flow
+      'react/jsx-props-no-spreading': 'off', // props spreading is fine
+      'react/state-in-constructor': 'off', // allow for class properties
+
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'error',
 
       'jsx-a11y/label-has-for': 'off', // deprecated
       'jsx-a11y/label-has-associated-control': 'off', // cannot handle nested custom form element

@@ -7,6 +7,7 @@ import { rules as jest } from 'eslint-plugin-jest'
 import { rules as typescript } from '@typescript-eslint/eslint-plugin'
 import { rules as react } from 'eslint-plugin-react'
 import { rules as jsxA11y } from 'eslint-plugin-jsx-a11y'
+import { rules as reactHooks } from 'eslint-plugin-react-hooks'
 import preferEarlyReturn from 'eslint-plugin-shopify/lib/rules/prefer-early-return'
 import preferClassProperties from 'eslint-plugin-shopify/lib/rules/prefer-class-properties'
 
@@ -26,6 +27,7 @@ const rules = {
   ...hoist('@typescript-eslint', typescript),
   ...hoist('react', react),
   ...hoist('jsx-a11y', jsxA11y),
+  ...hoist('react-hooks', reactHooks),
   'shopify/prefer-early-return': preferEarlyReturn,
   'shopify/prefer-class-properties': preferClassProperties,
 }

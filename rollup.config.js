@@ -24,6 +24,7 @@ const external = [
   'eslint-plugin-promise',
   'eslint-plugin-node',
   'eslint-plugin-standard',
+  'eslint-plugin-react-hooks',
   'eslint-plugin-jest',
   '@typescript-eslint/eslint-plugin',
   'eslint-plugin-react',

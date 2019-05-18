@@ -18,6 +18,7 @@ The plugins that this exposes are:
 - [`typescript`](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
 - [`react`](https://github.com/yannickcr/eslint-plugin-react)
 - [`jsx-a11y`](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+- [`react-hooks`](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks)
 
 This also exposes a couple rules from
 [`shopify`](https://github.com/shopify/eslint-plugin-shopify):
