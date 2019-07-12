@@ -36,7 +36,6 @@
     "eslint-config-prettier": "4.2.0",
     "eslint-config-standard": "12.0.0",
     "eslint-config-xo": "0.26.0",
-    "eslint-plugin-caleb": ".",
     "eslint-plugin-shopify": "28.0.0",
     "prettier": "1.17.1",
     "rollup": "1.11.3",
@@ -63,7 +62,8 @@
     "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**/*.js'",
     "prepublishOnly": "npm run build && npm run check-lint",
     "postpublish": "git tag v$npm_package_version && git push --tags",
-    "build": "rollup -c rollup.config.js && node build.js"
+    "build": "rollup -c rollup.config.js && node build.js",
+    "prepare": "npm link . --ignore-scripts"
   },
   "eslintConfig": {
     "extends": [
