@@ -203,13 +203,15 @@ module.exports.configs = {
   },
   jest: {
     plugins: ['caleb'],
-    overrides: {
-      files: ['__tests__/**', '*.{test,spec}.{t,j}s{x,}'],
-      env: prefix({ 'jest/globals': true }),
-      rules: prefix({
-        ...jest.configs.recommended.rules,
-        ...jest.configs.style.rules,
-      }),
-    },
+    overrides: [
+      {
+        files: ['__tests__/**', '*.{test,spec}.{t,j}s{x,}'],
+        env: prefix({ 'jest/globals': true }),
+        rules: prefix({
+          ...jest.configs.recommended.rules,
+          ...jest.configs.style.rules,
+        }),
+      },
+    ],
   },
 }
