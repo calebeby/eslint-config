@@ -63,7 +63,7 @@
     "prepublishOnly": "npm run build && npm run check-lint",
     "postpublish": "git tag v$npm_package_version && git push --tags",
     "build": "rollup -c rollup.config.js && node build.js",
-    "prepare": "npm link . --ignore-scripts"
+    "prepare": "npm link --ignore-scripts && npm link eslint-plugin-caleb"
   },
   "eslintConfig": {
     "extends": [
