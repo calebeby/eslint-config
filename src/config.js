@@ -108,6 +108,14 @@ module.exports.configs = {
         'shopify/prefer-early-return': 'error',
         'shopify/prefer-class-properties': 'error',
         'unicorn/prevent-abbreviations': 'off', // I like abbreviations
+        'no-else-return': [
+          'error',
+          {
+            allowElseIf: true,
+          },
+        ],
+        'no-await-in-loop': 'off', // Sometimes I want to await in a loop. I don't see why this is a problem
+        'no-async-promise-executor': 'off', // it is convenient sometimes to await in promise executor
       }),
     ),
     overrides: [
@@ -129,6 +137,7 @@ module.exports.configs = {
           'import/named': 'off', // this does not work for type imports; ts handles this
           'import/namespace': 'off', // this does not work for type imports; ts handles this
           'promise/param-names': 'off', // this does not work with typescript's noUnusedLocals because ts wants resolve to start with _
+          'no-dupe-class-members': 'off', // overloads are a thing in typescript, but this rule doesn't recognize that
 
           '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
           '@typescript-eslint/no-inferrable-types': 'error',
@@ -145,12 +154,14 @@ module.exports.configs = {
           '@typescript-eslint/no-unnecessary-qualifier': 'error',
           '@typescript-eslint/no-unnecessary-type-assertion': 'error',
           '@typescript-eslint/prefer-includes': 'error',
+          '@typescript-eslint/no-empty-interface': 'off', // usually this just pops up in the middle of me working on something. Does not provide value
         }),
       },
       {
         files: '*.d.ts{x,}',
         rules: prefix({
           'no-use-before-define': 'off', // this is very annoying and unnecessary in .d.ts files
+          'import/no-duplicates': 'off', // this was tripping on identical imports within separate `declare module` blocks
         }),
       },
     ],
@@ -183,6 +194,7 @@ module.exports.configs = {
       'react/prop-types': 'off', // prop types are bad. Use ts or flow
       'react/jsx-props-no-spreading': 'off', // props spreading is fine
       'react/state-in-constructor': 'off', // allow for class properties
+      'react/display-name': 'off', // this is annoying with `memo()`
 
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
