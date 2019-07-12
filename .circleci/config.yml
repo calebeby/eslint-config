@@ -18,3 +18,13 @@ jobs:
       - run:
           name: Lint
           command: npm run check-lint
+      - run:
+          name: Clone Peregrine
+          command: git clone https://github.com/Pigmice2733/peregrine-frontend
+      - run:
+          name: Install Peregrine
+          command:
+            cd peregrine-frontend && npm ci && npm link eslint-plugin-caleb
+      - run:
+          name: Lint Peregrine
+          command: cd peregrine-frontend && npm run check-lint
