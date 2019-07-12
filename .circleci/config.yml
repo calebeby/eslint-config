@@ -17,4 +17,4 @@ jobs:
           command: npm run build
       - run:
           name: Lint
-          command: npm run lint
+          command: npm run check-lint
