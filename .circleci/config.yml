@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Install Peregrine
           command:
-            cd peregrine-frontend && npm i && npm link eslint-plugin-caleb
+            cd peregrine-frontend && npm ci && npm link eslint-plugin-caleb
       - run:
           name: Lint Peregrine
           command: cd peregrine-frontend && npm run lint
