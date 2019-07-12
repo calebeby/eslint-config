@@ -27,4 +27,4 @@ jobs:
             cd peregrine-frontend && npm ci && npm link eslint-plugin-caleb
       - run:
           name: Lint Peregrine
-          command: cd peregrine-frontend && npm run lint
+          command: cd peregrine-frontend && npm run check-lint
