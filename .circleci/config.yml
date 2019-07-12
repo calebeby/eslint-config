@@ -4,7 +4,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
-    working_directory: ~/project/home
+    environment:
+      # change the npm config to avoid using sudo
+      NPM_CONFIG_PREFIX: ~/.npm-global
     steps:
       - checkout
       - run:
