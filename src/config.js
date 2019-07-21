@@ -208,7 +208,7 @@ module.exports.configs = {
     settings: { react: { pragma: 'h', version: '16' } },
     extends: 'plugin:caleb/react',
     rules: prefix({
-      'react/no-unknown-property': ['error', { ignore: ['class', 'for'] }],
+      'react/no-unknown-property': 'off', // preact uses class, for, and dashed svg attributes
       'react/no-deprecated': 'off', // preact API is not the same as react
       'react/no-unused-state': 'off', // does not account for destructuring params to render()
     }),
