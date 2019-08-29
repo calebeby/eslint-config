@@ -127,6 +127,7 @@ module.exports.configs = {
         },
         rules: prefix({
           ...typescript.configs.recommended.rules,
+          ...typescript.configs['recommended-requiring-type-checking'].rules,
           ...prettierTypescript.rules,
           'import/export': 'off',
           'no-undef': 'off', // super buggy with interfaces
@@ -139,22 +140,27 @@ module.exports.configs = {
           'promise/param-names': 'off', // this does not work with typescript's noUnusedLocals because ts wants resolve to start with _
           'no-dupe-class-members': 'off', // overloads are a thing in typescript, but this rule doesn't recognize that
 
-          '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
-          '@typescript-eslint/no-inferrable-types': 'error',
-          '@typescript-eslint/no-non-null-assertion': 'error',
-          '@typescript-eslint/no-parameter-properties': 'error',
-          '@typescript-eslint/no-triple-slash-reference': 'error',
-          '@typescript-eslint/no-var-requires': 'error',
           '@typescript-eslint/explicit-function-return-type': 'off', // inference is usually useful
           '@typescript-eslint/no-explicit-any': 'off', // any is often necessary
           '@typescript-eslint/explicit-member-accessibility': 'off', // public is the default and what I use 95% of the time
           '@typescript-eslint/no-object-literal-type-assertion': 'off', // sometimes you have to override the type of an object
           '@typescript-eslint/no-use-before-define': 'off',
+          '@typescript-eslint/no-empty-interface': 'off', // usually this just pops up in the middle of me working on something. Does not provide value
+          '@typescript-eslint/unbound-method': 'off', // unbound methods are often fine
+          '@typescript-eslint/no-misused-promises': 'off', // disregarding a promise value doesn't mean it is being misused
+
+          '@typescript-eslint/no-inferrable-types': 'error',
+          '@typescript-eslint/no-non-null-assertion': 'error',
+          '@typescript-eslint/no-parameter-properties': 'error',
+          '@typescript-eslint/triple-slash-reference': [
+            'error',
+            { path: 'never', types: 'never', lib: 'never' },
+          ],
+          '@typescript-eslint/no-var-requires': 'error',
+          '@typescript-eslint/no-unnecessary-type-arguments': 'error',
           '@typescript-eslint/await-thenable': 'error',
           '@typescript-eslint/no-unnecessary-qualifier': 'error',
-          '@typescript-eslint/no-unnecessary-type-assertion': 'error',
           '@typescript-eslint/prefer-includes': 'error',
-          '@typescript-eslint/no-empty-interface': 'off', // usually this just pops up in the middle of me working on something. Does not provide value
         }),
       },
       {
