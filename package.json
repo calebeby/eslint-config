@@ -58,6 +58,24 @@
     "trailingComma": "all",
     "proseWrap": "always"
   },
+  "release": {
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES",
+            "BREAKING"
+          ]
+        }
+      ],
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      "@semantic-release/release-notes-generator"
+    ]
+  },
   "scripts": {
     "check-lint": "eslint --ignore-path .gitignore . && prettier --list-different --ignore-path .gitignore '**/*.js'",
     "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**/*.js'",
