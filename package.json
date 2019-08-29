@@ -64,11 +64,13 @@
         "@semantic-release/commit-analyzer",
         {
           "preset": "angular",
-          "noteKeywords": [
-            "BREAKING CHANGE",
-            "BREAKING CHANGES",
-            "BREAKING"
-          ]
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          }
         }
       ],
       "@semantic-release/github",
