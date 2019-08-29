@@ -34,7 +34,7 @@
     "@babel/plugin-transform-shorthand-properties": "7.2.0",
     "eslint": "6.2.2",
     "eslint-config-prettier": "6.1.0",
-    "eslint-config-standard": "13.0.1",
+    "eslint-config-standard": "14.1.0",
     "eslint-config-xo": "0.26.0",
     "eslint-plugin-shopify": "30.0.1",
     "prettier": "1.18.2",
@@ -46,7 +46,7 @@
     "rollup-plugin-prettier": "0.6.0",
     "rollup-plugin-terser": "5.1.1",
     "typescript": "3.6.2",
-    "semantic-release": "^15.13.24"
+    "semantic-release": "15.13.24"
   },
   "peerDependencies": {
     "eslint": "^6",
