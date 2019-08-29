@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm ci
+          command: npm ci && npm link && npm link eslint-plugin-caleb
       - run:
           name: Build
           command: npm run build
