@@ -3,6 +3,10 @@
   "automerge": true,
   "automergeType": "branch",
   "major": {
-    "automerge": false
-  }
+    "automerge": false,
+    "semanticCommitType": "feat"
+  },
+  "semanticCommits": true,
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps"
 }
