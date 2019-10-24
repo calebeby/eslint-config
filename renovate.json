@@ -7,6 +7,19 @@
     "semanticCommitType": "feat",
     "baseBranches": ["next-major"]
   },
+  "packageRules": [
+    {
+      "packageNames": [
+        "eslint-plugin-react",
+        "@typescript-eslint/eslint-plugin"
+      ],
+      "separateMinorPatch": true,
+      "minor": {
+        "semanticCommitType": "feat",
+        "baseBranches": ["next-major"]
+      }
+    }
+  ],
   "semanticCommits": true,
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps"
