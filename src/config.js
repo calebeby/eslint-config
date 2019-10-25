@@ -87,6 +87,7 @@ module.exports.configs = {
         'func-names': 'off',
         'node/no-unpublished-require': 'off',
         'node/no-unpublished-import': 'off',
+        'node/no-missing-import': 'off', // doesn't work with ts files, and we have eslint-plugin-import for this
         'no-unused-vars': [
           'error',
           {
@@ -108,6 +109,7 @@ module.exports.configs = {
         'shopify/prefer-early-return': 'error',
         'shopify/prefer-class-properties': 'error',
         'unicorn/prevent-abbreviations': 'off', // I like abbreviations
+        'unicorn/consistent-function-scoping': 'off', // I like the idea of this rule, but it seems like it triggers too often in cases where the code is "correct"
         'no-else-return': [
           'error',
           {
@@ -194,6 +196,7 @@ module.exports.configs = {
       'react/no-set-state': 'off',
       'react/jsx-max-depth': ['error', { max: 10 }],
       'react/jsx-sort-props': 'off', // off for now, may change later if there is better autofix for options
+      'react/jsx-curly-brace-presence': 'off', // It incorrectly flags text nodes that have whitespace on the ends
       'react/forbid-component-props': 'off', // not sure about this rule atm
       'react/jsx-handler-names': 'off', // not sure about this rule atm
       'react/button-has-type': 'off',
