@@ -87,6 +87,7 @@ module.exports.configs = {
         'func-names': 'off',
         'node/no-unpublished-require': 'off',
         'node/no-unpublished-import': 'off',
+        'node/no-missing-import': 'off', // doesn't work with ts files, and we have eslint-plugin-import for this
         'no-unused-vars': [
           'error',
           {
@@ -108,6 +109,7 @@ module.exports.configs = {
         'shopify/prefer-early-return': 'error',
         'shopify/prefer-class-properties': 'error',
         'unicorn/prevent-abbreviations': 'off', // I like abbreviations
+        'unicorn/consistent-function-scoping': 'off', // I like the idea of this rule, but it seems like it triggers too often in cases where the code is "correct"
         'no-else-return': [
           'error',
           {
@@ -125,49 +127,38 @@ module.exports.configs = {
         parserOptions: {
           project: './tsconfig.json',
         },
+        settings: importPlugin.configs.typescript.settings,
         rules: prefix({
+          ...typescript.configs['eslint-recommended'].overrides[0].rules,
           ...typescript.configs.recommended.rules,
           ...typescript.configs['recommended-requiring-type-checking'].rules,
           ...prettierTypescript.rules,
-          'import/export': 'off',
-          'no-undef': 'off', // super buggy with interfaces
-          'import/no-unresolved': 'off', // maybe look into https://github.com/benmosher/eslint-plugin-import/blob/master/README.md#resolvers
-          'no-unused-vars': 'off', // too often broken. ts can handle this
-          'no-restricted-globals': 'off', // broken with interfaces (for example `interface Foo {event: string}`)
-          'unicorn/prefer-spread': 'off', // ts has problems with this for querySelectorAll
-          'import/named': 'off', // this does not work for type imports; ts handles this
-          'import/namespace': 'off', // this does not work for type imports; ts handles this
-          'promise/param-names': 'off', // this does not work with typescript's noUnusedLocals because ts wants resolve to start with _
-          'no-dupe-class-members': 'off', // overloads are a thing in typescript, but this rule doesn't recognize that
+
+          'import/no-unresolved': 'off', // TS can handle this
+          'import/export': 'off', // TS is better at this, and this rule is SLOW
+          'import/named': 'off', // TS handles this, and this rules is SLOW
+          'import/namespace': 'off', // TS handles this, and this rule is SLOW
+          'import/default': 'off', // TS handles this, this rule is SLOW
+          'import/no-named-as-default-member': 'off', // TS checks this, and this rule is SLOW
+          'import/no-named-as-default': 'off', // TS checks this, and this rule is SLOW
+
+          'node/no-extraneous-import': 'off', // TS checks this, this rule is SLOW
+
+          'no-import-assign': 'off', // TS handles this
+
+          '@typescript-eslint/array-type': [
+            'error',
+            { default: 'array', readonly: 'array' }, // Force T[] or readonly T[] instead of Array<T> or ReadonlyArray<T>
+          ],
 
           '@typescript-eslint/explicit-function-return-type': 'off', // inference is usually useful
           '@typescript-eslint/no-explicit-any': 'off', // any is often necessary
-          '@typescript-eslint/explicit-member-accessibility': 'off', // public is the default and what I use 95% of the time
-          '@typescript-eslint/no-object-literal-type-assertion': 'off', // sometimes you have to override the type of an object
           '@typescript-eslint/no-use-before-define': 'off',
           '@typescript-eslint/no-empty-interface': 'off', // usually this just pops up in the middle of me working on something. Does not provide value
           '@typescript-eslint/unbound-method': 'off', // unbound methods are often fine
           '@typescript-eslint/no-misused-promises': 'off', // disregarding a promise value doesn't mean it is being misused
 
-          '@typescript-eslint/no-inferrable-types': 'error',
-          '@typescript-eslint/no-non-null-assertion': 'error',
-          '@typescript-eslint/no-parameter-properties': 'error',
-          '@typescript-eslint/triple-slash-reference': [
-            'error',
-            { path: 'never', types: 'never', lib: 'never' },
-          ],
-          '@typescript-eslint/no-var-requires': 'error',
           '@typescript-eslint/no-unnecessary-type-arguments': 'error',
-          '@typescript-eslint/await-thenable': 'error',
-          '@typescript-eslint/no-unnecessary-qualifier': 'error',
-          '@typescript-eslint/prefer-includes': 'error',
-        }),
-      },
-      {
-        files: '*.d.ts{x,}',
-        rules: prefix({
-          'no-use-before-define': 'off', // this is very annoying and unnecessary in .d.ts files
-          'import/no-duplicates': 'off', // this was tripping on identical imports within separate `declare module` blocks
         }),
       },
     ],
@@ -194,6 +185,7 @@ module.exports.configs = {
       'react/no-set-state': 'off',
       'react/jsx-max-depth': ['error', { max: 10 }],
       'react/jsx-sort-props': 'off', // off for now, may change later if there is better autofix for options
+      'react/jsx-curly-brace-presence': 'off', // It incorrectly flags text nodes that have whitespace on the ends
       'react/forbid-component-props': 'off', // not sure about this rule atm
       'react/jsx-handler-names': 'off', // not sure about this rule atm
       'react/button-has-type': 'off',
