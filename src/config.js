@@ -196,6 +196,7 @@ module.exports.configs = {
       'react/no-set-state': 'off',
       'react/jsx-max-depth': ['error', { max: 10 }],
       'react/jsx-sort-props': 'off', // off for now, may change later if there is better autofix for options
+      'react/jsx-curly-brace-presence': 'off', // It incorrectly flags text nodes that have whitespace on the ends
       'react/forbid-component-props': 'off', // not sure about this rule atm
       'react/jsx-handler-names': 'off', // not sure about this rule atm
       'react/button-has-type': 'off',
