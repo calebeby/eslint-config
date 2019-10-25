@@ -83,6 +83,7 @@
     "lint": "eslint --ignore-path .gitignore --fix . && prettier --write --ignore-path .gitignore '**/*.js'",
     "prepublishOnly": "npm run build && npm run check-lint",
     "build": "rollup -c rollup.config.js && node build.js",
+    "build:config": "node build.js",
     "semantic-release": "semantic-release"
   },
   "eslintConfig": {
