@@ -9,10 +9,7 @@
   },
   "packageRules": [
     {
-      "packageNames": [
-        "eslint-plugin-react",
-        "@typescript-eslint/eslint-plugin"
-      ],
+      "packageNames": ["eslint-plugin-react"],
       "separateMinorPatch": true,
       "minor": {
         "semanticCommitType": "feat",
