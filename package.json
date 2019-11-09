@@ -37,7 +37,7 @@
     "eslint-config-standard": "14.1.0",
     "eslint-config-xo": "0.27.2",
     "eslint-plugin-shopify": "31.0.0",
-    "prettier": "1.19.0",
+    "prettier": "1.19.1",
     "rollup": "1.26.3",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
