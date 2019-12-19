@@ -29,8 +29,8 @@
     "eslint-plugin-unicorn": "12.1.0"
   },
   "devDependencies": {
-    "@babel/core": "7.7.5",
-    "@babel/plugin-proposal-object-rest-spread": "7.7.4",
+    "@babel/core": "7.7.7",
+    "@babel/plugin-proposal-object-rest-spread": "7.7.7",
     "@babel/plugin-transform-shorthand-properties": "7.7.4",
     "eslint": "6.7.2",
     "eslint-config-prettier": "6.7.0",
