@@ -1,5 +1,6 @@
 {
   "extends": ["config:base"],
+  "baseBranches": ["next"],
   "automerge": true,
   "automergeType": "branch",
   "major": {
