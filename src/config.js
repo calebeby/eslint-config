@@ -16,7 +16,7 @@ const typescript = require('@typescript-eslint/eslint-plugin')
 /**
  * @param {{[key: string]: any}} rules the rules to process
  */
-const prefix = rules =>
+const prefix = (rules) =>
   Object.entries(rules).reduce((output, [key, value]) => {
     if (key.includes('/')) key = 'caleb/' + key
     output[key] = value
@@ -29,7 +29,7 @@ const hoist = (prefix, rules) =>
     return output
   }, {})
 
-const removeUnused = rules =>
+const removeUnused = (rules) =>
   Object.entries(rules).reduce((output, [key, value]) => {
     if (
       value === 'off' ||
@@ -105,8 +105,8 @@ module.exports.configs = {
         'max-params': ['warn', 6],
         'lines-between-class-members': 'off', // this is silly imo
         'node/shebang': 'off', // tons of false positives
-        'shopify/prefer-early-return': 'error',
-        'shopify/prefer-class-properties': 'error',
+        '@shopify/prefer-early-return': 'error',
+        '@shopify/prefer-class-properties': 'error',
         'unicorn/prevent-abbreviations': 'off', // I like abbreviations
         'unicorn/no-null': 'off', // Null is ok, and can be used. DOM uses null a lot. This rule is really annoying
         'unicorn/no-fn-reference-in-iterator': 'off', // The situation where this rule would trigger usefully is very very rare. It probably triggers useslessly at least 10x as often. This can be caught by manual code review
