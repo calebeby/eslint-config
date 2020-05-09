@@ -105,8 +105,8 @@ module.exports.configs = {
         'max-params': ['warn', 6],
         'lines-between-class-members': 'off', // this is silly imo
         'node/shebang': 'off', // tons of false positives
-        'shopify/prefer-early-return': 'error',
-        'shopify/prefer-class-properties': 'error',
+        '@shopify/prefer-early-return': 'error',
+        '@shopify/prefer-class-properties': 'error',
         'unicorn/prevent-abbreviations': 'off', // I like abbreviations
         'unicorn/consistent-function-scoping': 'off', // I like the idea of this rule, but it seems like it triggers too often in cases where the code is "correct"
         'no-else-return': [

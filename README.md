@@ -21,10 +21,10 @@ The plugins that this exposes are:
 - [`react-hooks`](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks)
 
 This also exposes a couple rules from
-[`shopify`](https://github.com/shopify/eslint-plugin-shopify):
+[`shopify`](https://github.com/Shopify/web-foundation/tree/master/packages/eslint-plugin):
 
-- [`shopify/prefer-early-return`](https://github.com/Shopify/eslint-plugin-shopify/blob/master/docs/rules/prefer-early-return.md)
-- [`shopify/prefer-class-properties`](https://github.com/Shopify/eslint-plugin-shopify/blob/master/docs/rules/prefer-class-properties.md)
+- [`shopify/prefer-early-return`](https://github.com/Shopify/web-foundation/blob/master/packages/eslint-plugin/docs/rules/prefer-early-return.md)
+- [`shopify/prefer-class-properties`](https://github.com/Shopify/web-foundation/blob/master/packages/eslint-plugin/docs/rules/prefer-class-properties.md)
 
 To override settings for any of these plugins, you must prefix the configuration
 with `caleb/`, because the plugins are exposed through this "super-plugin".
@@ -34,7 +34,7 @@ with `caleb/`, because the plugins are exposed through this "super-plugin".
   "extends": ["plugin:calebeby/recommended"],
   "rules": {
     "caleb/unicorn/catch-error-name": "off",
-    "caleb/shopify/prefer-early-return": "off"
+    "caleb/@shopify/prefer-early-return": "off"
   }
 }
 ```
