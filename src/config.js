@@ -16,7 +16,7 @@ const typescript = require('@typescript-eslint/eslint-plugin')
 /**
  * @param {{[key: string]: any}} rules the rules to process
  */
-const prefix = rules =>
+const prefix = (rules) =>
   Object.entries(rules).reduce((output, [key, value]) => {
     if (key.includes('/')) key = 'caleb/' + key
     output[key] = value
@@ -29,7 +29,7 @@ const hoist = (prefix, rules) =>
     return output
   }, {})
 
-const removeUnused = rules =>
+const removeUnused = (rules) =>
   Object.entries(rules).reduce((output, [key, value]) => {
     if (
       value === 'off' ||
