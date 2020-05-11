@@ -1,7 +1,6 @@
-import commonjs from 'rollup-plugin-commonjs'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import json from 'rollup-plugin-json'
-import babel from 'rollup-plugin-babel'
+import nodeResolve from '@rollup/plugin-node-resolve'
+import json from '@rollup/plugin-json'
+import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import prettier from 'rollup-plugin-prettier'
 
@@ -36,22 +35,23 @@ export default {
   output: {
     file: 'dist/rules.js',
     format: 'cjs',
+    preferConst: true,
     freeze: false,
   },
   external,
   plugins: [
     nodeResolve({ extensions }),
     json({ preferConst: true, compact: true }),
-    commonjs({ extensions }),
-    babel(),
+    babel({ babelHelpers: 'bundled' }),
     terser({
       mangle: false,
       compress: {
+        unsafe: true,
         defaults: true,
         toplevel: true,
         hoist_props: true,
         join_vars: false,
-        passes: 3,
+        passes: 4,
         booleans: false,
       },
     }),

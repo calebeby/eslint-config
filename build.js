@@ -6,7 +6,7 @@ const { configs, environments } = require('./src/config')
 
 const resolveStart = '__REQUIRE_RESOLVE__'
 const resolveEnd = '__END_REQUIRE_RESOLVE'
-const stringify = data =>
+const stringify = (data) =>
   `module.exports = ${JSON.stringify(data, (k, v) => {
     if (k === 'parser' && v.startsWith(__dirname)) {
       return (
@@ -29,7 +29,7 @@ const stringify = data =>
     },
   )
 
-const createFile = data =>
+const createFile = (data) =>
   prettier.format(stringify(data), {
     parser: 'babel',
     singleQuote: true,
