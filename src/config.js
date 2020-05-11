@@ -15,9 +15,8 @@ const typescript = require('@typescript-eslint/eslint-plugin')
 
 /**
  * @param {{[key: string]: any}} rules the rules to process
- * @param {false} removeUnused whether to remove rules set to 'off' or 0
  */
-const prefix = rules =>
+const prefix = (rules) =>
   Object.entries(rules).reduce((output, [key, value]) => {
     if (key.includes('/')) key = 'caleb/' + key
     output[key] = value
@@ -30,7 +29,7 @@ const hoist = (prefix, rules) =>
     return output
   }, {})
 
-const removeUnused = rules =>
+const removeUnused = (rules) =>
   Object.entries(rules).reduce((output, [key, value]) => {
     if (
       value === 'off' ||
@@ -106,16 +105,14 @@ module.exports.configs = {
         'max-params': ['warn', 6],
         'lines-between-class-members': 'off', // this is silly imo
         'node/shebang': 'off', // tons of false positives
-        'shopify/prefer-early-return': 'error',
-        'shopify/prefer-class-properties': 'error',
+        '@shopify/prefer-early-return': 'error',
+        '@shopify/prefer-class-properties': 'error',
         'unicorn/prevent-abbreviations': 'off', // I like abbreviations
+        'unicorn/no-null': 'off', // Null is ok, and can be used. DOM uses null a lot. This rule is really annoying
+        'unicorn/no-fn-reference-in-iterator': 'off', // The situation where this rule would trigger usefully is very very rare. It probably triggers useslessly at least 10x as often. This can be caught by manual code review
+        'unicorn/better-regex': ['error', { sortCharacterClasses: false }],
         'unicorn/consistent-function-scoping': 'off', // I like the idea of this rule, but it seems like it triggers too often in cases where the code is "correct"
-        'no-else-return': [
-          'error',
-          {
-            allowElseIf: true,
-          },
-        ],
+        'no-else-return': ['error', { allowElseIf: true }],
         'no-await-in-loop': 'off', // Sometimes I want to await in a loop. I don't see why this is a problem
         'no-async-promise-executor': 'off', // it is convenient sometimes to await in promise executor
       }),
@@ -146,11 +143,9 @@ module.exports.configs = {
 
           'no-import-assign': 'off', // TS handles this
 
-          '@typescript-eslint/array-type': [
-            'error',
-            { default: 'array', readonly: 'array' }, // Force T[] or readonly T[] instead of Array<T> or ReadonlyArray<T>
-          ],
+          '@typescript-eslint/array-type': 'error', // Force T[] or readonly T[] instead of Array<T> or ReadonlyArray<T>
 
+          '@typescript-eslint/no-empty-function': 'off', // silly rule
           '@typescript-eslint/explicit-function-return-type': 'off', // inference is usually useful
           '@typescript-eslint/no-explicit-any': 'off', // any is often necessary
           '@typescript-eslint/no-use-before-define': 'off',
@@ -159,6 +154,7 @@ module.exports.configs = {
           '@typescript-eslint/no-misused-promises': 'off', // disregarding a promise value doesn't mean it is being misused
 
           '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+          '@typescript-eslint/prefer-optional-chain': 'error',
         }),
       },
     ],
@@ -193,6 +189,7 @@ module.exports.configs = {
       'react/jsx-props-no-spreading': 'off', // props spreading is fine
       'react/state-in-constructor': 'off', // allow for class properties
       'react/display-name': 'off', // this is annoying with `memo()`
+      'react/function-component-definition': 'off',
 
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
