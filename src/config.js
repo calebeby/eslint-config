@@ -189,6 +189,7 @@ module.exports.configs = {
       'react/jsx-props-no-spreading': 'off', // props spreading is fine
       'react/state-in-constructor': 'off', // allow for class properties
       'react/display-name': 'off', // this is annoying with `memo()`
+      'react/function-component-definition': 'off',
 
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
