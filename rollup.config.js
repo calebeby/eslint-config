@@ -38,6 +38,9 @@ export default {
     preferConst: true,
     freeze: false,
   },
+  treeshake: {
+    moduleSideEffects: false
+  },
   external,
   plugins: [
     nodeResolve({ extensions }),
