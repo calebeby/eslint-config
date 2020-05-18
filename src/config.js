@@ -111,6 +111,7 @@ module.exports.configs = {
         'unicorn/no-null': 'off', // Null is ok, and can be used. DOM uses null a lot. This rule is really annoying
         'unicorn/no-fn-reference-in-iterator': 'off', // The situation where this rule would trigger usefully is very very rare. It probably triggers useslessly at least 10x as often. This can be caught by manual code review
         'unicorn/better-regex': ['error', { sortCharacterClasses: false }],
+        'unicorn/prefer-set-has': 'off', // Let humans decide correct data structure
         'unicorn/consistent-function-scoping': 'off', // I like the idea of this rule, but it seems like it triggers too often in cases where the code is "correct"
         'unicorn/no-useless-undefined': 'off', // Removing undefined can cause TS errors
         'unicorn/no-reduce': 'off', // Reduce is often useful
