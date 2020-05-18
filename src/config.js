@@ -156,6 +156,8 @@ module.exports.configs = {
           '@typescript-eslint/unbound-method': 'off', // unbound methods are often fine
           '@typescript-eslint/no-misused-promises': 'off', // disregarding a promise value doesn't mean it is being misused
 
+          'no-unused-expressions': 'off', // TS version of rule fixes to support optional chaining
+          '@typescript-eslint/no-unused-expressions': 'error',
           '@typescript-eslint/no-unnecessary-type-arguments': 'error',
           '@typescript-eslint/prefer-optional-chain': 'error',
         }),
