@@ -58,6 +58,9 @@
     "proseWrap": "always"
   },
   "release": {
+    "branches": [
+      "master"
+    ],
     "plugins": [
       [
         "@semantic-release/commit-analyzer",
