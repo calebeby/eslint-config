@@ -111,7 +111,10 @@ module.exports.configs = {
         'unicorn/no-null': 'off', // Null is ok, and can be used. DOM uses null a lot. This rule is really annoying
         'unicorn/no-fn-reference-in-iterator': 'off', // The situation where this rule would trigger usefully is very very rare. It probably triggers useslessly at least 10x as often. This can be caught by manual code review
         'unicorn/better-regex': ['error', { sortCharacterClasses: false }],
+        'unicorn/prefer-set-has': 'off', // Let humans decide correct data structure
         'unicorn/consistent-function-scoping': 'off', // I like the idea of this rule, but it seems like it triggers too often in cases where the code is "correct"
+        'unicorn/no-useless-undefined': 'off', // Removing undefined can cause TS errors
+        'unicorn/no-reduce': 'off', // Reduce is often useful
         'no-else-return': ['error', { allowElseIf: true }],
         'no-await-in-loop': 'off', // Sometimes I want to await in a loop. I don't see why this is a problem
         'no-async-promise-executor': 'off', // it is convenient sometimes to await in promise executor
@@ -153,6 +156,8 @@ module.exports.configs = {
           '@typescript-eslint/unbound-method': 'off', // unbound methods are often fine
           '@typescript-eslint/no-misused-promises': 'off', // disregarding a promise value doesn't mean it is being misused
 
+          'no-unused-expressions': 'off', // TS version of rule fixes to support optional chaining
+          '@typescript-eslint/no-unused-expressions': 'error',
           '@typescript-eslint/no-unnecessary-type-arguments': 'error',
           '@typescript-eslint/prefer-optional-chain': 'error',
         }),
