@@ -39,7 +39,7 @@ export default {
     freeze: false,
   },
   treeshake: {
-    moduleSideEffects: false
+    moduleSideEffects: false,
   },
   external,
   plugins: [
