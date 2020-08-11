@@ -1,5 +1,13 @@
 # eslint-plugin-caleb
 
+## 10.0.2
+
+### Patch Changes
+
+- [`d25433f`](https://github.com/calebeby/eslint-config/commit/d25433f81533761ae5dfcba8e6eb858149c7abda)
+  [#231](https://github.com/calebeby/eslint-config/pull/231) Thanks
+  [@calebeby](https://github.com/calebeby)! - Fix running build before publish
+
 ## 10.0.1
 
 ### Patch Changes
