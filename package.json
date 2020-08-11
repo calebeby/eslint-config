@@ -63,6 +63,7 @@
     "build": "rollup -c rollup.config.js && node build.js",
     "build:config": "node build.js",
     "changeset": "changeset",
+    "version": "changeset version && prettier --write .",
     "release": "changeset publish"
   },
   "eslintConfig": {
