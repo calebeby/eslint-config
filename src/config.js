@@ -247,6 +247,7 @@ module.exports.configs = {
       'react/state-in-constructor': 'off', // allow for class properties
       'react/display-name': 'off', // this is annoying with `memo()`
       'react/function-component-definition': 'off',
+      'react/require-default-props': 'off',
 
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
