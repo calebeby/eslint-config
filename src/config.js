@@ -30,16 +30,10 @@ const hoist = (prefix, rules) =>
   }, {})
 
 const removeUnused = (rules) =>
-  Object.entries(rules).reduce((output, [key, value]) => {
-    if (
-      value === 'off' ||
-      value === 0 ||
-      value[0] === 'off' ||
-      value[0] === 0
-    ) {
-      return output
-    }
-    output[key] = value
+  Object.entries(rules).reduce((output, [key, ruleOptions]) => {
+    const value = Array.isArray(ruleOptions) ? ruleOptions[0] : ruleOptions
+    if (value === 'off' || value === 0) return output
+    output[key] = ruleOptions
     return output
   }, {})
 
@@ -81,6 +75,7 @@ module.exports.configs = {
         // overrides
         'valid-jsdoc': 'off',
         'no-return-assign': ['error'],
+        'no-promise-executor-return': 'off',
         'guard-for-in': 'off', // this is annoying and often unnecessary
         'max-len': 'off', // prettier sometimes chooses to allow lines to exceed max, it is fine
         'func-names': 'off',
@@ -181,6 +176,8 @@ module.exports.configs = {
           '@typescript-eslint/unbound-method': 'off', // It is pretty common for this already being handled outside of what TS/ESLint can be aware of
           'no-unused-expressions': 'off',
           '@typescript-eslint/no-unused-expressions': ['error'], // This rule is like the built in ESLint rule but it supports optional chaining
+          'no-loss-of-precision': 'off',
+          '@typescript-eslint/no-loss-of-precision': 'error', // supports numeric separators
           'no-use-before-define': 'off',
           '@typescript-eslint/ban-types': [
             'error',
