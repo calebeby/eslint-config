@@ -176,6 +176,8 @@ module.exports.configs = {
           '@typescript-eslint/unbound-method': 'off', // It is pretty common for this already being handled outside of what TS/ESLint can be aware of
           'no-unused-expressions': 'off',
           '@typescript-eslint/no-unused-expressions': ['error'], // This rule is like the built in ESLint rule but it supports optional chaining
+          'no-loss-of-precision': 'off',
+          '@typescript-eslint/no-loss-of-precision': 'error', // supports numeric separators
           'no-use-before-define': 'off',
           '@typescript-eslint/ban-types': [
             'error',
