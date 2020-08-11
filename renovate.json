@@ -1,24 +1,3 @@
 {
-  "extends": ["config:base"],
-  "baseBranches": ["next"],
-  "automerge": true,
-  "automergeType": "branch",
-  "major": {
-    "automerge": false,
-    "semanticCommitType": "feat",
-    "baseBranches": ["next-major"]
-  },
-  "packageRules": [
-    {
-      "packageNames": ["eslint-plugin-react"],
-      "separateMinorPatch": true,
-      "minor": {
-        "semanticCommitType": "feat",
-        "baseBranches": ["next-major"]
-      }
-    }
-  ],
-  "semanticCommits": true,
-  "semanticCommitType": "chore",
-  "semanticCommitScope": "deps"
+  "extends": ["config:base"]
 }
