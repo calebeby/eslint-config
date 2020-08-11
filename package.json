@@ -44,7 +44,6 @@
     "rollup": "2.23.1",
     "rollup-plugin-prettier": "2.1.0",
     "rollup-plugin-terser": "7.0.0",
-    "semantic-release": "17.1.1",
     "typescript": "3.9.7"
   },
   "peerDependencies": {
@@ -57,35 +56,11 @@
     "trailingComma": "all",
     "proseWrap": "always"
   },
-  "release": {
-    "branches": [
-      "master"
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "parserOpts": {
-            "noteKeywords": [
-              "BREAKING CHANGE",
-              "BREAKING CHANGES",
-              "BREAKING"
-            ]
-          }
-        }
-      ],
-      "@semantic-release/github",
-      "@semantic-release/npm",
-      "@semantic-release/release-notes-generator"
-    ]
-  },
   "scripts": {
     "check-lint": "eslint . && prettier --check .",
     "lint": "eslint --fix . && prettier --write .",
     "build": "rollup -c rollup.config.js && node build.js",
-    "build:config": "node build.js",
-    "semantic-release": "semantic-release"
+    "build:config": "node build.js"
   },
   "eslintConfig": {
     "extends": [
