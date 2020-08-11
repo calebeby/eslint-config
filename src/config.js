@@ -31,7 +31,7 @@ const hoist = (prefix, rules) =>
 
 const removeUnused = (rules) =>
   Object.entries(rules).reduce((output, [key, ruleOptions]) => {
-    const value = typeof ruleOptions === 'array' ? ruleOptions[0] : ruleOptions
+    const value = Array.isArray(ruleOptions) ? ruleOptions[0] : ruleOptions
     if (value === 'off' || value === 0) return output
     output[key] = value
     return output
