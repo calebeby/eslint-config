@@ -30,15 +30,9 @@ const hoist = (prefix, rules) =>
   }, {})
 
 const removeUnused = (rules) =>
-  Object.entries(rules).reduce((output, [key, value]) => {
-    if (
-      value === 'off' ||
-      value === 0 ||
-      value[0] === 'off' ||
-      value[0] === 0
-    ) {
-      return output
-    }
+  Object.entries(rules).reduce((output, [key, ruleOptions]) => {
+    const value = typeof ruleOptions === 'array' ? ruleOptions[0] : ruleOptions
+    if (value === 'off' || value === 0) return output
     output[key] = value
     return output
   }, {})
@@ -81,6 +75,7 @@ module.exports.configs = {
         // overrides
         'valid-jsdoc': 'off',
         'no-return-assign': ['error'],
+        'no-promise-executor-return': 'off',
         'guard-for-in': 'off', // this is annoying and often unnecessary
         'max-len': 'off', // prettier sometimes chooses to allow lines to exceed max, it is fine
         'func-names': 'off',
