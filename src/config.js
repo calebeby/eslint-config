@@ -30,16 +30,10 @@ const hoist = (prefix, rules) =>
   }, {})
 
 const removeUnused = (rules) =>
-  Object.entries(rules).reduce((output, [key, value]) => {
-    if (
-      value === 'off' ||
-      value === 0 ||
-      value[0] === 'off' ||
-      value[0] === 0
-    ) {
-      return output
-    }
-    output[key] = value
+  Object.entries(rules).reduce((output, [key, ruleOptions]) => {
+    const value = Array.isArray(ruleOptions) ? ruleOptions[0] : ruleOptions
+    if (value === 'off' || value === 0) return output
+    output[key] = ruleOptions
     return output
   }, {})
 
@@ -81,6 +75,7 @@ module.exports.configs = {
         // overrides
         'valid-jsdoc': 'off',
         'no-return-assign': ['error'],
+        'no-promise-executor-return': 'off',
         'guard-for-in': 'off', // this is annoying and often unnecessary
         'max-len': 'off', // prettier sometimes chooses to allow lines to exceed max, it is fine
         'func-names': 'off',
@@ -146,20 +141,77 @@ module.exports.configs = {
 
           'no-import-assign': 'off', // TS handles this
 
-          '@typescript-eslint/array-type': 'error', // Force T[] or readonly T[] instead of Array<T> or ReadonlyArray<T>
+          '@typescript-eslint/array-type': ['error', { default: 'array' }], // Require consistency: Use foo[] instead of Array<foo>
+          '@typescript-eslint/ban-ts-comment': [
+            'error',
+            {
+              // True means ban, false means allow
+              'ts-expect-error': false, // This is an escape hatch, allow it
+              'ts-ignore': true,
+              'ts-nocheck': false,
+              'ts-check': false,
+            },
+          ],
+          '@typescript-eslint/explicit-module-boundary-types': 'off', // Type inference is useful even for public functions
+          '@typescript-eslint/no-explicit-any': 'off', // Any is an escape hatch, it should be allowed
+          '@typescript-eslint/no-floating-promises': 'off', // Don't force every promise rejection to be caught. Humans can decide when it makes sense to handle errors and when it doesn't
+          '@typescript-eslint/no-non-null-assertion': 'error', // Default is warn
+          '@typescript-eslint/no-unsafe-assignment': 'off', // Any is an escape hatch, let it be an escape hatch
+          '@typescript-eslint/no-unsafe-call': 'off', // Any is an escape hatch, let it be an escape hatch
+          '@typescript-eslint/no-unsafe-member-access': 'off', // Any is an escape hatch, let it be an escape hatch
+          '@typescript-eslint/no-unsafe-return': 'off', // Any is an escape hatch, let it be an escape hatch
+          '@typescript-eslint/restrict-template-expressions': 'off', // Allow using any-typed-values in template expressions
+          '@typescript-eslint/no-misused-promises': [
+            'error',
+            {
+              checksConditionals: true,
+              checksVoidReturn: false, // lots of false positives
+            },
+          ],
 
-          '@typescript-eslint/no-empty-function': 'off', // silly rule
-          '@typescript-eslint/explicit-function-return-type': 'off', // inference is usually useful
-          '@typescript-eslint/no-explicit-any': 'off', // any is often necessary
-          '@typescript-eslint/no-use-before-define': 'off',
-          '@typescript-eslint/no-empty-interface': 'off', // usually this just pops up in the middle of me working on something. Does not provide value
-          '@typescript-eslint/unbound-method': 'off', // unbound methods are often fine
-          '@typescript-eslint/no-misused-promises': 'off', // disregarding a promise value doesn't mean it is being misused
-
-          'no-unused-expressions': 'off', // TS version of rule fixes to support optional chaining
-          '@typescript-eslint/no-unused-expressions': 'error',
-          '@typescript-eslint/no-unnecessary-type-arguments': 'error',
-          '@typescript-eslint/prefer-optional-chain': 'error',
+          '@typescript-eslint/prefer-optional-chain': 'error', // More readable syntax
+          'no-unused-vars': 'off', // TS checks this via noUnusedLocals / noUnusedParameters
+          '@typescript-eslint/no-unused-vars': 'off', // TS checks this via noUnusedLocals / noUnusedParameters
+          '@typescript-eslint/no-empty-function': 'off', // Non-TS version of rule is not used either
+          '@typescript-eslint/unbound-method': 'off', // It is pretty common for this already being handled outside of what TS/ESLint can be aware of
+          'no-unused-expressions': 'off',
+          '@typescript-eslint/no-unused-expressions': ['error'], // This rule is like the built in ESLint rule but it supports optional chaining
+          'no-loss-of-precision': 'off',
+          '@typescript-eslint/no-loss-of-precision': 'error', // supports numeric separators
+          'no-use-before-define': 'off',
+          '@typescript-eslint/ban-types': [
+            'error',
+            {
+              extendDefaults: false,
+              types: {
+                String: {
+                  message: 'Use string instead',
+                  fixWith: 'string',
+                },
+                Boolean: {
+                  message: 'Use boolean instead',
+                  fixWith: 'boolean',
+                },
+                Number: {
+                  message: 'Use number instead',
+                  fixWith: 'number',
+                },
+                Symbol: {
+                  message: 'Use symbol instead',
+                  fixWith: 'symbol',
+                },
+                Function: {
+                  message:
+                    'The `Function` type does not provide type safety when called',
+                  fixWith: '(() => void)',
+                },
+                Object: {
+                  message: 'Use object instead',
+                  fixWith: 'object',
+                },
+              },
+            },
+          ],
         }),
       },
     ],
@@ -195,6 +247,7 @@ module.exports.configs = {
       'react/state-in-constructor': 'off', // allow for class properties
       'react/display-name': 'off', // this is annoying with `memo()`
       'react/function-component-definition': 'off',
+      'react/require-default-props': 'off',
 
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
