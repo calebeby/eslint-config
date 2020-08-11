@@ -65,7 +65,7 @@
     "build:config": "node build.js",
     "changeset": "changeset",
     "version": "changeset version && prettier --write .",
-    "release": "changeset publish"
+    "release": "npm run build && changeset publish"
   },
   "eslintConfig": {
     "extends": [
