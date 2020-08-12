@@ -82,6 +82,7 @@ module.exports.configs = {
         'node/no-unpublished-require': 'off',
         'node/no-unpublished-import': 'off',
         'node/no-missing-import': 'off', // doesn't work with ts files, and we have eslint-plugin-import for this
+        'import/no-anonymous-default-export': 'error',
         'no-unused-vars': [
           'error',
           {

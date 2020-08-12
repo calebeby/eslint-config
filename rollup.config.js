@@ -30,7 +30,7 @@ const external = [
   'eslint-plugin-jsx-a11y',
 ]
 
-export default {
+const config = {
   input: 'src/rules.js',
   output: {
     file: 'dist/rules.js',
@@ -66,3 +66,5 @@ export default {
     }),
   ],
 }
+
+export default config
