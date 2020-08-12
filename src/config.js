@@ -42,7 +42,7 @@ module.exports.environments = hoist('jest', jest.environments)
 module.exports.configs = {
   recommended: {
     parserOptions: {
-      ecmaVersion: 2018,
+      ecmaVersion: 2020,
       sourceType: 'module',
       ecmaFeatures: { jsx: true },
     },
@@ -259,7 +259,14 @@ module.exports.configs = {
   },
   preact: {
     plugins: ['caleb'],
-    settings: { react: { pragma: 'h', version: '16' } },
+    settings: {
+      react: {
+        version: '16.13',
+        pragma: 'h',
+        // Problem: the react plugin interprets this as <h.Fragment> so it does not notice <Fragment>
+        fragment: 'Fragment',
+      },
+    },
     extends: 'plugin:caleb/react',
     rules: prefix({
       'react/no-unknown-property': 'off', // preact uses class, for, and dashed svg attributes
