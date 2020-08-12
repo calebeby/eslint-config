@@ -2,4 +2,4 @@
 'eslint-plugin-caleb': major
 ---
 
-Enable no-anonymous-default-export
+Enable `no-anonymous-default-export`
