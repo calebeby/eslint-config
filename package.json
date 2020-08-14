@@ -43,7 +43,7 @@
     "eslint-config-standard": "14.1.1",
     "eslint-config-xo": "0.32.1",
     "prettier": "2.0.5",
-    "rollup": "2.23.1",
+    "rollup": "2.25.0",
     "rollup-plugin-prettier": "2.1.0",
     "rollup-plugin-terser": "7.0.0",
     "typescript": "3.9.7"
