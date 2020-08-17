@@ -55,8 +55,7 @@
   "prettier": {
     "singleQuote": true,
     "semi": false,
-    "trailingComma": "all",
-    "proseWrap": "always"
+    "trailingComma": "all"
   },
   "scripts": {
     "check-lint": "eslint . && prettier --check .",
