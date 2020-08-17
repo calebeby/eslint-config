@@ -37,6 +37,7 @@ const config = {
     format: 'cjs',
     preferConst: true,
     freeze: false,
+    exports: 'default',
   },
   treeshake: {
     moduleSideEffects: false,
