@@ -1,5 +1,5 @@
 ---
-"eslint-plugin-caleb": major
+'eslint-plugin-caleb': major
 ---
 
 Update dependency eslint-plugin-react to `v7.20.6`
