@@ -29,7 +29,7 @@
     "eslint-plugin-unicorn": "21.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.11.1",
+    "@babel/core": "7.11.4",
     "@babel/plugin-transform-shorthand-properties": "7.10.4",
     "@changesets/changelog-github": "0.2.7",
     "@changesets/cli": "2.10.1",
