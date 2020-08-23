@@ -1,5 +1,5 @@
 ---
-"eslint-config-caleb": major
+"eslint-plugin-caleb": major
 ---
 
 Update dependency `eslint-plugin-react-hooks` to v4.1.0
