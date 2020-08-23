@@ -218,6 +218,13 @@ module.exports.configs = {
           '@typescript-eslint/no-unnecessary-type-arguments': 'error',
         }),
       },
+      {
+        files: ['*.d.ts'],
+        rules: prefix({
+          // A .d.ts file will probably have `declare module` blocks which should each have their own imports
+          'import/no-duplicates': 'off',
+        }),
+      },
     ],
   },
   react: {
