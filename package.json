@@ -35,7 +35,7 @@
     "@changesets/cli": "2.11.1",
     "@rollup/plugin-babel": "5.2.0",
     "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "9.0.0",
+    "@rollup/plugin-node-resolve": "10.0.0",
     "@shopify/eslint-plugin": "37.0.1",
     "babel-plugin-un-cjs": "2.2.0",
     "eslint": "7.11.0",
